@@ -1,0 +1,17 @@
+[project]
+name = "document-ingestion-engine"
+version = "0.1.0"
+description = "Production-ready PDF document ingestion and extraction pipeline"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "langgraph>=1.2.12",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.414",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.16.9",
+]
