@@ -5,8 +5,11 @@ description = "Production-ready PDF document ingestion and extraction pipeline"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "fastapi>=0.143.0",
     "langgraph>=1.2.12",
     "pymupdf>=1.28.2",
+    "python-multipart>=0.0.32",
+    "uvicorn>=0.54.0",
 ]
 
 [dependency-groups]
