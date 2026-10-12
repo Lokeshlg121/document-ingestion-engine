@@ -2,16 +2,26 @@ import pymupdf
 from pathlib import Path
 
 
+def extract_text(pdf_source:str | Path | bytes) -> list[str]:
+  if isinstance(pdf_source,bytes):
+    document = pymupdf.open(
+      stream= pdf_source,
+      filetype= "pdf"
+    )
+  else: 
+    pdf_path = Path(pdf_source)
+    if not pdf_path.is_file():
+      raise FileNotFoundError("File not Found")
+    document = pymupdf.open(pdf_source)
 
-def extract_text(pdf_path:str) -> list[str]:
-    path = Path(pdf_path)
-    if not path.is_file():
-        raise FileNotFoundError("File not found: {pdf_path}")
-    document = pymupdf.open(pdf_path)
-    pages = []
-    for page in document:
-        text = page.get_text()
-        pages.append(text)
+#   print("doccc",document[0])  
+  pages = []
+  for page in document:
+    page_text = page.get_text()
+    print("Page number:", page.number + 1)
+    print("Extracted text:", page_text)
+    pages.append(page_text)
 
-    document.close()
-    return pages
+    
+  return pages
+  

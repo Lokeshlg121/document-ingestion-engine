@@ -22,14 +22,8 @@ async def upload_pdf(file: UploadFile = File(...)):
                 status_code=400,
                 detail= "The uploaded file is empty"
             )
-        import pymupdf
-        with pymupdf.open(stream=contents, filetype="pdf") as document:
-            pages = [page.get_text() for page in document]
-            return {
-                "filename": file.filename,
-                "pages": len(pages),
-                "text": pages,
-            }
+        result = extract_text(contents)
+        return result
     except HTTPException:
         raise 
     except Exception as exc:

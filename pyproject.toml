@@ -8,7 +8,9 @@ dependencies = [
     "fastapi>=0.143.0",
     "langgraph>=1.2.12",
     "pymupdf>=1.28.2",
+    "python-dotenv>=1.2.4",
     "python-multipart>=0.0.32",
+    "sentence-transformers>=6.1.0",
     "uvicorn>=0.54.0",
 ]
 
